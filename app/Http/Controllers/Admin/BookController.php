@@ -46,11 +46,10 @@ class BookController extends Controller
     }
 
 
-
     public function edit(Book $book)
     {
         $categories = Category::all(); // Fetch all categories
-        return view('admin.books.edit', compact('book', 'categories')); // Pass categories to the view
+        return view('admin.books.edit', compact('book', 'categories'));
     }
 
     public function update(Request $request, Book $book)
@@ -60,7 +59,7 @@ class BookController extends Controller
             'author' => 'required',
             'isbn' => 'size:13|unique:books,isbn,' . $book->id,
             'published_year' => 'integer|min:1000|max:2100',
-            'category' => 'required|exists:categories,id', // Validate category
+            'category' => 'required|exists:categories,id',
             'total_copies' => 'required|integer|min:1',
         ]);
 

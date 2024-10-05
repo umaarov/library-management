@@ -43,7 +43,6 @@
             </tbody>
         </table>
 
-        <!-- Ensure this line is below the table -->
-        {{ $loans->links() }} <!-- Pagination links -->
+        {{ $loans->links() }}
     </div>
 @endsection

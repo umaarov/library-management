@@ -31,7 +31,7 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone }}</td>
                     <td>{{ $user->role }}</td>
-                    <td>{{ $user->group ? $user->group->name : 'N/A' }}</td> <!-- Display group name or 'N/A' -->
+                    <td>{{ $user->group ? $user->group->name : 'N/A' }}</td>
                     <td>
                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
                         <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">

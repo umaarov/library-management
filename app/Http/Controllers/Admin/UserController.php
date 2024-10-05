@@ -22,8 +22,8 @@ class UserController extends Controller
 
     public function create()
     {
-        $groups = Group::all(); // Fetch all groups
-        return view('admin.users.create', compact('groups')); // Pass groups to the view
+        $groups = Group::all();
+        return view('admin.users.create', compact('groups'));
     }
 
     public function store(Request $request)
@@ -34,7 +34,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'phone' => 'required',
             'role' => 'required|in:student,teacher,staff',
-            'group_id' => 'required|exists:groups,id', // Validate group_id
+            'group_id' => 'required|exists:groups,id',
         ]);
 
         User::create($request->all());
@@ -43,8 +43,8 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $groups = Group::all(); // Fetch all groups
-        return view('admin.users.edit', compact('user', 'groups')); // Pass groups to the view
+        $groups = Group::all();
+        return view('admin.users.edit', compact('user', 'groups'));
     }
 
     public function update(Request $request, User $user)
@@ -55,7 +55,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $user->id,
             'phone' => 'required',
             'role' => 'required|in:student,teacher,staff',
-            'group_id' => 'required|exists:groups,id', // Validate group_id
+            'group_id' => 'required|exists:groups,id',
         ]);
 
         $user->update($request->all());

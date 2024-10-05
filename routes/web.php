@@ -25,17 +25,14 @@ Route::domain('admin.laravel.local')->group(function () {
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-        // Books CRUD
         Route::resource('books', BookController::class);
 
-        // Users CRUD
         Route::resource('users', UserController::class);
+
         Route::resource('groups', GroupController::class);
 
-        // Categories CRUD
         Route::resource('categories', CategoryController::class);
 
-        // Loans Management
         Route::resource('loans', LoanController::class);
     });
 });

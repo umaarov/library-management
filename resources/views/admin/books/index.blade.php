@@ -13,7 +13,7 @@
                 <th>Author</th>
                 <th>ISBN</th>
                 <th>Published Year</th>
-                <th>Category</th> <!-- New Category Column -->
+                <th>Category</th>
                 <th>Available Copies</th>
                 <th>Actions</th>
             </tr>
@@ -23,7 +23,7 @@
                 <tr>
                     <td>{{ $book->title }}</td>
                     <td>{{ $book->author }}</td>
-                    <td>{{ $book->category ? $book->category->name : 'N/A' }}</td> <!-- Show Category Name -->
+                    <td>{{ $book->category ? $book->category->name : 'N/A' }}</td>
                     <td>{{ $book->available_copies }}</td>
                     <td>
                         <a href="{{ route('books.edit', $book->id) }}" class="btn btn-warning">Edit</a>

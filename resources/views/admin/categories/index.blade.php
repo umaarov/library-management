@@ -35,7 +35,6 @@
             </tbody>
         </table>
 
-        <!-- Ensure this line is below the table -->
-        {{ $categories->links() }} <!-- Pagination links -->
+        {{ $categories->links() }}
     </div>
 @endsection

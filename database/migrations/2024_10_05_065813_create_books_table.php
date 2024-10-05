@@ -14,9 +14,9 @@ class CreateBooksTable extends Migration
             $table->string('author', 255);
             $table->string('isbn', 13)->unique()->nullable();
             $table->integer('published_year')->nullable();
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade'); // Change this line
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->integer('total_copies');
-            $table->integer('available_copies')->default(0); // Set a default value for available_copies
+            $table->integer('available_copies')->default(0);
             $table->timestamps();
         });
     }
