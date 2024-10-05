@@ -18,13 +18,13 @@ class LoanController extends Controller
 {
     public function index()
     {
-        $loans = Loan::with('book', 'user')->get();
+        $loans = Loan::with(['book', 'user'])->paginate(10);
         return view('admin.loans.index', compact('loans'));
     }
 
     public function create()
     {
-        $books = Book::where('available_copies', '>', 0)->get();
+        $books = Book::all();
         $users = User::all();
         return view('admin.loans.create', compact('books', 'users'));
     }
@@ -38,18 +38,28 @@ class LoanController extends Controller
             'return_date' => 'required|date|after:loan_date',
         ]);
 
-        $loan = Loan::create($request->all());
-        // Decrease available copies of the book
-        $loan->book->decrement('available_copies');
-
+        Loan::create($request->all());
         return redirect()->route('loans.index')->with('success', 'Loan added successfully.');
     }
 
-    public function returnBook(Loan $loan)
+    public function edit(Loan $loan)
     {
-        $loan->update(['status' => 'returned', 'actual_return_date' => now()]);
-        $loan->book->increment('available_copies');
-        return redirect()->route('loans.index')->with('success', 'Book returned successfully.');
+        $books = Book::all();
+        $users = User::all();
+        return view('admin.loans.edit', compact('loan', 'books', 'users'));
+    }
+
+    public function update(Request $request, Loan $loan)
+    {
+        $request->validate([
+            'book_id' => 'required|exists:books,id',
+            'user_id' => 'required|exists:users,id',
+            'loan_date' => 'required|date',
+            'return_date' => 'required|date|after:loan_date',
+        ]);
+
+        $loan->update($request->all());
+        return redirect()->route('loans.index')->with('success', 'Loan updated successfully.');
     }
 
     public function destroy(Loan $loan)

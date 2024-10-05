@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\LoanController;
 
 Route::domain('laravel.local')->group(function () {
@@ -29,6 +30,7 @@ Route::domain('admin.laravel.local')->group(function () {
 
         // Users CRUD
         Route::resource('users', UserController::class);
+        Route::resource('groups', GroupController::class);
 
         // Categories CRUD
         Route::resource('categories', CategoryController::class);

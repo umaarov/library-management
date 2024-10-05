@@ -16,7 +16,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        // Make sure to paginate the results
+        $categories = Category::paginate(10);
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -28,11 +29,12 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:100',
+            'description' => 'nullable|string',
         ]);
 
         Category::create($request->all());
-        return redirect()->route('categories.index')->with('success', 'Category added successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
     }
 
     public function edit(Category $category)
@@ -43,7 +45,8 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:100',
+            'description' => 'nullable|string',
         ]);
 
         $category->update($request->all());

@@ -9,6 +9,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Group;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -21,7 +22,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('admin.users.create');
+        $groups = Group::all(); // Fetch all groups
+        return view('admin.users.create', compact('groups')); // Pass groups to the view
     }
 
     public function store(Request $request)
@@ -32,6 +34,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'phone' => 'required',
             'role' => 'required|in:student,teacher,staff',
+            'group_id' => 'required|exists:groups,id', // Validate group_id
         ]);
 
         User::create($request->all());
@@ -40,7 +43,8 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        $groups = Group::all(); // Fetch all groups
+        return view('admin.users.edit', compact('user', 'groups')); // Pass groups to the view
     }
 
     public function update(Request $request, User $user)
@@ -51,6 +55,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $user->id,
             'phone' => 'required',
             'role' => 'required|in:student,teacher,staff',
+            'group_id' => 'required|exists:groups,id', // Validate group_id
         ]);
 
         $user->update($request->all());
