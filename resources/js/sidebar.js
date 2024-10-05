@@ -11,10 +11,3 @@ document.getElementById('menu-search').addEventListener('input', function() {
     }
 });
 });
-function toggleSidebar() {
-    const sidebar = document.querySelector('.main-sidebar');
-    const body = document.querySelector('body');
-
-    sidebar.classList.toggle('sidebar-collapsed');
-    body.classList.toggle('sidebar-collapsed');
-}

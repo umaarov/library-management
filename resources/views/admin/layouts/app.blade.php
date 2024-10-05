@@ -7,8 +7,6 @@
 </head>
 <body>
 <div class="wrapper">
-    @include('admin.layouts.navbar')
-
     @include('admin.layouts.sidebar')
 
     <div class="content-wrapper">
@@ -19,7 +17,7 @@
         </div>
     </div>
 
-    @include('admin.layouts.footer')
+    {{--@include('admin.layouts.footer')--}}
 </div>
 
 </body>

@@ -1,10 +1,6 @@
 @vite(['resources/css/sidebar.css', 'resources/js/sidebar.js'])
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<button class="sidebar-toggle" onclick="toggleSidebar()">
-    <i class="fas fa-bars"></i>
-</button>
-
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <div class="brand-section">
         <a href="{{ route('admin.dashboard') }}" class="brand-link">
