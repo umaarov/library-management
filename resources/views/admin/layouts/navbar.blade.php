@@ -1,3 +1,4 @@
+@vite(['resources/css/navbar.css'])
 <nav class="navbar navbar-expand navbar-light bg-white">
     <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Admin Panel</a>
     <ul class="navbar-nav ml-auto">
