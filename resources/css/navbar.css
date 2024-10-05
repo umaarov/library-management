@@ -1,38 +1,64 @@
 /* Navbar styling */
-.navbar {
-    background-color: #f8f9fa; /* Light background color */
-    border-bottom: 1px solid #dee2e6;
-    height: 60px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+.main-navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    z-index: 1001;
 }
 
-.navbar-brand {
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-toggle {
+    background: none;
+    border: none;
     font-size: 20px;
-    font-weight: bold;
-    color: #2C3E50; /* Dark text */
-    text-transform: uppercase;
-    padding-left: 20px;
 }
 
-.navbar-brand:hover {
-    color: #1abc9c; /* Hover effect */
+.navbar-center .search-form {
+    display: flex;
+    align-items: center;
 }
 
-.navbar-nav {
-    margin-right: 20px;
+.search-input {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
-.navbar-nav .nav-item .nav-link {
-    color: #2C3E50;
-    font-size: 16px;
-    padding: 10px 15px;
+.search-btn {
+    background-color: #3498db;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
 }
 
-.navbar-nav .nav-item .nav-link:hover {
-    color: #1abc9c; /* Same highlight color as sidebar */
-    transition: color 0.3s ease;
+.navbar-right {
+    display: flex;
+    align-items: center;
 }
 
-.navbar-nav .nav-item .nav-link {
-    font-weight: 500;
+.logout-link {
+    margin-left: 20px;
+    color: #3498db;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logout-link:hover {
+    color: #2980b9;
+}
+
+.logout-link i {
+    margin-right: 5px;
 }

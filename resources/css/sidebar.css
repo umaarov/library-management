@@ -1,65 +1,125 @@
-/* Sidebar styling */
+/* General sidebar styling */
 .main-sidebar {
-    background-color: #2C3E50;
-    padding-top: 20px;
+    background-color: #2C3E50; /* Sidebar background color */
     height: 100vh;
-    position: fixed; /* Make it fixed to the left side */
-    width: 250px; /* Define sidebar width */
-    top: 0;
+    width: 250px;
+    position: fixed;
     left: 0;
+    top: 0;
+    transition: width 0.3s ease;
+    z-index: 1000;
+    padding-top: 20px;
 }
 
-.main-sidebar .brand-link {
+/* Brand Section */
+.brand-section {
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    border-bottom: 1px solid #34495e;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 1.5rem 0;
-    font-size: 1.25rem;
-    color: #ecf0f1;
-    text-transform: uppercase;
-    font-weight: bold;
 }
 
-.main-sidebar .sidebar {
-    padding: 1rem;
-}
-
-.main-sidebar .nav-sidebar > .nav-item {
+.brand-logo {
+    max-width: 100px;
+    height: auto;
     margin-bottom: 10px;
 }
 
-.main-sidebar .nav-sidebar > .nav-item > .nav-link {
+/* Search Box styling */
+.search-box {
     display: flex;
     align-items: center;
-    padding: 10px 15px;
-    color: #ecf0f1;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
+    background-color: #34495e; /* Match the sidebar background */
+    padding: 5px;
+    margin: 10px auto; /* Center the search box */
+    border-radius: 5px;
+    width: 90%; /* Adjust width as necessary */
 }
 
-.main-sidebar .nav-sidebar > .nav-item > .nav-link:hover {
+/* Input field styling */
+.search-box input[type="text"] {
+    border: none;
+    background-color: transparent; /* Make the background transparent */
+    color: #ffffff;  /* White text */
+    padding: 5px;
+    outline: none;
+    width: 100%; /* Full width */
+    font-size: 14px;
+}
+
+/* Placeholder text styling */
+.search-box input[type="text"]::placeholder {
+    color: #b0b0b0;  /* Lighter color for placeholder */
+}
+
+/* Search button (magnifying glass icon) */
+.search-box button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.search-box button i {
+    color: #b0b0b0;  /* Icon color */
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+    padding: 10px;
+}
+
+.menu-item {
+    margin-bottom: 10px;
+}
+
+.menu-link {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    transition: background-color 0.3s ease;
+    border-radius: 6px;
+}
+
+.menu-link:hover {
     background-color: #1abc9c;
     color: #fff;
-    transition: background-color 0.3s ease;
 }
 
-.main-sidebar .nav-sidebar > .nav-item.active > .nav-link {
-    background-color: #16a085;
-    color: #fff;
-}
-
-.main-sidebar .nav-sidebar > .nav-item > .nav-link > p {
-    margin-left: 10px;
-    margin-bottom: 0;
-}
-
-.main-sidebar .nav-sidebar > .nav-item > .nav-link .icon {
+.menu-link .icon {
     margin-right: 10px;
     font-size: 18px;
 }
 
-body {
-    margin-left: 250px; /* To make space for the sidebar */
+.menu-title {
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
+/* Sidebar Collapse */
+.sidebar-collapsed {
+    width: 70px;
+}
+
+.sidebar-collapsed .menu-link .icon {
+    margin-right: 0;
+}
+
+.sidebar-collapsed .menu-title {
+    display: none;
+}
+
+/* Push content to the right */
+body {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar-collapsed + body {
+    margin-left: 70px;
+}
