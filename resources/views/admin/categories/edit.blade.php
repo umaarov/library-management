@@ -1,3 +1,5 @@
+@vite(['resources/css/categories.css'])
+
 @extends('admin.layouts.app')
 
 @section('content')
