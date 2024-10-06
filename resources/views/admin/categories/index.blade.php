@@ -14,33 +14,37 @@
             <a href="{{ route('categories.create') }}" class="btn btn-primary">Add Category</a>
         </div>
 
-        <div class="card mb-3">
-            <div class="card-body">
-                <form method="GET" action="{{ route('categories.index') }}" class="row g-3">
-                    <div class="col-md-6">
-                        <input type="text" name="search" class="form-control" placeholder="Search categories..." value="{{ request('search') }}">
-                    </div>
-                    <div class="col-md-3">
-                        <select name="sort_by" class="form-select">
-                            <option value="id_asc" {{ request('sort_by') == 'id_asc' ? 'selected' : '' }}>Sort by ID (ASC)</option>
-                            <option value="id_desc" {{ request('sort_by') == 'id_desc' ? 'selected' : '' }}>Sort by ID (DESC)</option>
-                            <option value="name_asc" {{ request('sort_by') == 'name_asc' ? 'selected' : '' }}>Sort by Name (ASC)</option>
-                            <option value="name_desc" {{ request('sort_by') == 'name_desc' ? 'selected' : '' }}>Sort by Name (DESC)</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <button type="submit" class="btn btn-secondary w-100">Apply Filters</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-striped align-middle">
                 <thead class="table-dark">
                 <tr>
-                    <th class="text-center">ID</th>
-                    <th>Name</th>
+                    <!-- Sortable Column for ID -->
+                    <th class="text-center">
+                        ID
+                        <a href="{{ route('categories.index', ['sort' => 'id_asc']) }}">
+                            <i class="bi bi-sort-down"></i>
+                        </a>
+                        <a href="{{ route('categories.index', ['sort' => 'id_desc']) }}">
+                            <i class="bi bi-sort-up"></i>
+                        </a>
+                        <!-- ID Filter -->
+                        <input type="text" name="id_search" class="form-control form-control-sm mt-2" placeholder="ID" value="{{ request('id_search') }}">
+                    </th>
+
+                    <!-- Sortable Column for Name -->
+                    <th>
+                        Name
+                        <a href="{{ route('categories.index', ['sort' => 'name_asc']) }}">
+                            <i class="bi bi-sort-alpha-down"></i>
+                        </a>
+                        <a href="{{ route('categories.index', ['sort' => 'name_desc']) }}">
+                            <i class="bi bi-sort-alpha-up"></i>
+                        </a>
+                        <!-- Name Filter -->
+                        <input type="text" name="name_search" class="form-control form-control-sm mt-2" placeholder="Name" value="{{ request('name_search') }}">
+                    </th>
+
+                    <!-- Actions Column (no sorting) -->
                     <th class="text-center">Actions</th>
                 </tr>
                 </thead>
@@ -71,6 +75,7 @@
             </table>
         </div>
 
+        <!-- Pagination -->
         <div class="d-flex justify-content-end mt-3">
             {{ $categories->links('vendor.pagination.bootstrap-4') }}
         </div>
