@@ -18,13 +18,13 @@
 <div class="wrapper">
 
     <!-- Navbar -->
-    @include('admin.header')
+    @include('admin.layouts.header')
 
             <!-- Main Sidebar Container -->
-    @include('admin.sidebar')
+    @include('admin.layouts.sidebar')
 
             <!-- Content Wrapper. Contains page content -->
-    @include('admin.content')
+    @include('admin.layouts.content')
 
             <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -36,7 +36,7 @@
     </aside>
 
     <!-- Main Footer -->
-    @include('admin.footer')
+    @include('admin.layouts.footer')
 </div>
 
 <!-- Vite - Load JS from resources/template -->
