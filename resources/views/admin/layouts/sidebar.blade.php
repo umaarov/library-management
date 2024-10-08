@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary">
     <!-- Brand Logo -->
     <a href="../../../template/index3.html" class="brand-link">
         <img src="../../../template/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
